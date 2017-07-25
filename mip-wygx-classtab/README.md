@@ -29,7 +29,7 @@ mip-wygx-classtab 用于多按钮，多样式绑定切换
     <span toggle-class="square">square</span>
 </mip-wygx-classtab>
 <mip-wygx-classtab bind-to=".box1">
-     <span toggle-class="yellow">yellow</span>
+    <span toggle-class="yellow">yellow</span>
     <span toggle-class="green">green</span>
 </mip-wygx-classtab>
 <div class="box1"></div>
