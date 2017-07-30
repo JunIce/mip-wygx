@@ -1,49 +1,37 @@
 /**
- * @file mip-wygx-classtab 组件
- * @east_qiu@gmail.com
- * @for  woyaogexing.com  
+ * @file mip-wygx-classtab 组件.
+ * @author east_qiu@gmail.com.
+ * @version 1.0.2
  */
 
 define(function (require) {
-	var $ = require('zepto');
+    var $ = require('zepto');
 
     var customElement = require('customElement').create();
-    
-    function Tabs (el) {
-        this._parent = el; // 父节点
-        this.bindToClassname = el.getAttribute('bind-to');
-        this.bindElements = $(this.bindToClassname);
-        this.Childrens = $(el).children(); // 父节点下的子节点
-    }
 
-    Tabs.prototype.addEvent = function(){
-        var self = this;
+    customElement.prototype.build = function () {
+        var ele = this.element; // 获取根节点
+        var bdEle = []; // 类储存器
+        var bindToClassname = ele.getAttribute('bind-to'); // 获取需要绑定节点
+        var bindElements = $(bindToClassname);
 
-        //储存样式切换记录
-        var bdEle = [];
+        // 根元素绑定事件
+        ele.addEventListener('click', function (e) {
 
-        //子节点遍历绑定事件
-        this.Childrens.map(function(index, children){
-            $(children).on('click', function(){
+            // 判断点击节点
+            if (e.target.nodeName !== this.nodeName) {
+                var bindToClassname = e.target.getAttribute('toggle-class');
 
-                var that = this;
                 // 清空记录方便下次储存
-                self.bindElements.removeClass(bdEle.join(',')); // 移除上次样式
-                bdEle = []; 
+                if (bdEle.length > 0) {
+                    bindElements.removeClass(bdEle.join(',')); // 移除上次样式
+                }
 
-                self.bindElements.addClass($(that).attr('toggle-class')); // 添加样式
-                bdEle.push($(that).attr('toggle-class'));
-            });
+                bdEle = [];
+                bindElements.addClass(bindToClassname); // 添加样式
+                bdEle.push(bindToClassname);
+            }
         });
     };
-
-    customElement.prototype.build = function(){
-        var ele = this.element;
-
-        //实例化对象
-        new Tabs(ele).addEvent();
-    };
-    
-
     return customElement;
 });
