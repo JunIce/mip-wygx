@@ -25,12 +25,25 @@ define(function (require) {
         input.type = 'file';
         $(input).css({
             'opacity'   : 0,
-                    'position'  : 'absolute',
-                    'right'     : '-3px',
-                    'top'       : '-3px',
-                    'z-index'   : 999 
+            'position'  : 'absolute',
+            'right'     : '0',
+            'top'       : '0',
+            'width'     : '100%',
+            'z-index'   : 999 
         })
         element.appendChild(input)
+
+        var div = document.createElement('div');
+        div.innerText = '上传'
+        $(div).css({
+            'height':'28px',
+            'lineHeight':'28px',
+            'text-align':'center',
+            'background-color' : '#eee',
+            'border-radius' : '5px'
+        })
+
+        element.appendChild(div)
         console.log(this)
     };
     return customElement;
