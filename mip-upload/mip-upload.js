@@ -26,8 +26,18 @@ define(function (require) {
             width : '100%',
             height : '30px',
             backgroundColor : '#eeeeee',
-            
-        }
+            innerText : '上传图片'
+        };
+
+        var userOption = {
+            width : element.width,
+            height : element.height,
+            backgroundColor : element.backgroundColor,
+            innerText : element.innerText,
+
+        };
+        var options = Object.assign({},defaultCss,userOption);
+        console.log(options)
         var input = document.createElement('input');
         input.type = 'file';
         $(input).css({
