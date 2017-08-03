@@ -12,7 +12,13 @@ mip-wygx-classtab 用于多按钮，多样式绑定切换
 
 ### 基本用法
 ```html
-<mip-upload type="file">
+<mip-upload type="file"
+	width="200px"
+	height="35px"
+	backgroundColor ="red"
+	innerText="200px"
+
+>
 	
 </mip-upload>
 ```
