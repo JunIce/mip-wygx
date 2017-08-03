@@ -21,6 +21,13 @@ define(function (require) {
 
     customElement.prototype.build = function () {
         var element = this.element;
+
+        var defaultCss = {
+            width : '100%',
+            height : '30px',
+            backgroundColor : '#eeeeee',
+            
+        }
         var input = document.createElement('input');
         input.type = 'file';
         $(input).css({
