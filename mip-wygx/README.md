@@ -1,2 +1,0 @@
-# mip-wygx
-wygx-extensions
