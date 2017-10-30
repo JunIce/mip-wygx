@@ -1,6 +1,6 @@
 # mip-wygx-imgslider
 
-mip-wygx-imgslider 组件说明
+mip-wygx-imgslider 我要个性网头像栏目内容页图片展示
 
 标题|内容
 ----|----
@@ -15,6 +15,7 @@ mip-wygx-imgslider 组件说明
 data-app = true
 data-appurl = "http://mip.woyaogexing.com/app/wygxw.apk"
 data-nexturl = "http://mip.woyaogexing.com/touxiang/nv/2017/541178.html"
+data-downText = "下载图片"
 >
 	<script id="mip-wygx-imgslider" type="application/json">
 	{
@@ -51,21 +52,37 @@ data-nexturl = "http://mip.woyaogexing.com/touxiang/nv/2017/541178.html"
 ### data-app
 
 说明：是否显示APP推荐
+
 必选项：否
+
 类型：string
+
 取值范围：true|false
+
 默认值：false
 
 ### data-appurl
 
 说明：APP推荐的下载地址,data-app 必须为true
+
 必选项：否
+
 类型：string
 
 ### data-nexturl
 
 说明：下一页地址URL
+
 必选项：否
+
+类型：string
+
+### data-downText
+
+说明：下载图片文字
+
+必选项：否
+
 类型：string
 
 ## 注意事项
