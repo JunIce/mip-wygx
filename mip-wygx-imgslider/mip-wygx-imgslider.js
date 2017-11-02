@@ -188,8 +188,8 @@ define(function (require) {
         }
     };
 
-
-    customElement.prototype.build = function () {
+    // 组件初次进入屏幕时加载事件，作为性能优化
+    customElement.prototype.firstInviewCallback = function () {
         // 模板渲染，事件绑定
         var element = this.element;
 
@@ -199,6 +199,11 @@ define(function (require) {
         this.data = Object.values(data)[0];
         elements = this.data;
 
+        // 模板渲染
+        templates.render(element, data).then(function (html) {
+            element.innerHTML = html;
+        });
+
         // 对象合并
         Object.assign(ui.defaultSetting, {
             app: element.getAttribute('data-app'),
@@ -206,10 +211,7 @@ define(function (require) {
             nexturl: element.getAttribute('data-nexturl'),
             download: element.getAttribute('data-downText')
         }, ui.defaultSetting);
-        // 模板渲染
-        templates.render(element, data).then(function (html) {
-            element.innerHTML = html;
-        });
+
         // 元素点击监听
         element.addEventListener('click', function (e) {
             if (e.target.nodeName === 'IMG') {
