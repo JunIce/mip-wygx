@@ -1,7 +1,7 @@
 /**
  * @file mip-wygx-views 组件.
  * @author east_qiu@gmail.com.
- * @version 1.0.1
+ * @version 1.0.3
  */
 
 define(function (require) {
@@ -12,6 +12,7 @@ define(function (require) {
     var naboo = require('naboo');
     var viewport = require('viewport');
     var elements = [];
+    var downloadUrl = [];
     var Gesture = Util.Gesture;
     var css = Util.css;
 
@@ -144,8 +145,7 @@ define(function (require) {
         },
         picdownload: function (index) {
             var download = this.downloadBtn;
-            // 优化mip链接
-            download.setAttribute('data-type', 'mip');
+
             if (index === this.eLen - 1) {
                 download.innerHTML = '下一组';
                 download.setAttribute('href', this.defaultSetting.nexturl);
@@ -153,7 +153,7 @@ define(function (require) {
             }
             else {
                 download.innerHTML = this.defaultSetting.download;
-                download.setAttribute('href', elements[index]);
+                download.setAttribute('href', downloadUrl[index]);
                 download.setAttribute('download', true);
             }
         },
@@ -192,8 +192,14 @@ define(function (require) {
         var element = this.element;
         var imgNodes = element.querySelectorAll('mip-img');
         var nodes = Array.prototype.slice.call(imgNodes);
+
         nodes.map(function (node) {
-            elements.push(node.getAttribute('data-original'));
+            var src = node.getAttribute('src');
+            elements.push(src);
+            var original = node.getAttribute('data-original');
+            var originalType = original.toLowerCase().split('.').splice(-1);
+            // 下载使用jpg格式图片
+            downloadUrl.push(src.replace(/webp/, originalType[0]));
         });
 
         // 对象合并
