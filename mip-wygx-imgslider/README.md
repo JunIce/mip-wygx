@@ -87,4 +87,3 @@ data-downText = "下载图片"
 
 ## 注意事项
 1. 组件必须引用mip-mustache.js作为模板渲染使用
-
