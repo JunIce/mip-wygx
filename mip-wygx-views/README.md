@@ -12,6 +12,7 @@ mip-wygx-views 我要个性网头像栏目内容页图片展示
 ### 基本用法
 ```html
 <mip-wygx-views
+bind-element='mip-img'
 data-nexturl = "http://mip.woyaogexing.com/touxiang/nv/2017/541178.html"
 >
 <ul>
@@ -42,6 +43,14 @@ data-nexturl = "http://mip.woyaogexing.com/touxiang/nv/2017/541178.html"
 
 ## 属性
 
+### bind-element
+
+说明：需要绑定的标签名称
+
+必选项：否
+
+类型：string
+
 
 ### data-nexturl
 
@@ -67,6 +76,8 @@ data-nexturl = "http://mip.woyaogexing.com/touxiang/nv/2017/541178.html"
 3. 组件内的图片必须含有data-original属性
 
 ## 更新
+1.1.0 增加绑定元素
+
 1.0.4 修改下载地址到mip服务器，webp链接转换
 
 1.0.3 下载窗口打开新页面
