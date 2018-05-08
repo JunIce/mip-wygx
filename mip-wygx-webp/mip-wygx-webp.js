@@ -6,7 +6,6 @@
 define(function (require) {
     'use strict';
     var util = require('util');
-    var rect = util.rect;
     var customElement = require('customElement').create();
     var lazyCookie = {
         setCookie: function () {
@@ -22,6 +21,7 @@ define(function (require) {
             } else {
                 return null;
             }
+
         }
     };
     var hasWebp = (function () {
@@ -94,26 +94,27 @@ define(function (require) {
     // 图片占位符
     var Placeholder = function (element) {
         this.target = element;
-    }
+    };
 
     Placeholder.prototype.create = function () {
-        var placeholder = this.placeholder = document.createElement("div");
-        placeholder.classList.add("mip-wygx-placeholder");
+        var placeholder = this.placeholder = document.createElement('div');
+        placeholder.classList.add('mip-wygx-placeholder');
         this.target.appendChild(placeholder);
-    }
+    };
 
     Placeholder.prototype.remove = function () {
-        console.log('remove')
         var parent = this.placeholder.parentElement;
         parent && parent.removeChild(this.placeholder);
-    }
+    };
 
+    /**
+     * 初次渲染
+     */
     customElement.prototype.attachedCallback = function () {
         var element = this.element;
-        // console.log(rect.getElementRect(element))
         this.placeholder = new Placeholder(element);
         this.placeholder.create();
-    }
+    };
 
     return customElement;
 });
